@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: #d4d4d4;
+    font-family: sans-serif;
+}
+header {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    background-color: #a3a3a3;
+}
+.add_num {
+    width: 90%;
+    background-color: rgba(8, 8, 8, 0.78);
+    margin: 0 auto;
+    display: none;
+    flex-direction: column;
+    border-radius: 6px;
+    position: absolute;
+    top: 15%;
+    left: 0;
+    right: 0;
+    margin-top: 30px;
+    opacity: 0;
+    -webkit-transition: all 1s;
+  -ms-transition: all 1s;
+  -o-transition: all 1s;
+  -moz-transition: all 1s;
+  transition: all 1s;
+}
+.num_edit {
+    width: 90%;
+    background-color: rgba(8, 8, 8, 0.78);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 6px;
+    position: absolute;
+    top: 15%;
+    left: 0;
+    right: 0;
+    margin-top: 30px;
+    opacity: 0;
+}
+.add_num input, .search_block input, .num_edit input{
+    margin: 10px 10px 0 10px;
+    height: 30px;
+    border-radius: 6px;
+    border: none;
+    padding: 0 20px;
+}
+.search_block input {
+    margin: 10px;
+}
+.add_num input:last-child, .num_edit input:last-child {
+    margin: 10px 10px 10px 10px;
+}

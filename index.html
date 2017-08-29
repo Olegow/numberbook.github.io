@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style/style.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <div class="search_block">
+        <input type="search" name="" value="" class="search" id="search">
+        <input type="button" name="" value="Поиск" class="ser_but" id="ser_but" onclick="test()">
+        <input type="button" onclick="showAddNum()" name="" value="Добавить" class="add_but" id="add_but">
+      </div>
+    </header>
+  <div class="num_page">
+    <!-- EDIT BLOCK -->
+    <!-- <div class="num_edit">
+      <input type="text" name="" value="" placeholder="Имя" id="firstname">
+      <input type="text" name="" value="" placeholder="Фамилия" id="lastname">
+      <input type="text" name="" value="" placeholder="Номер" id="number">
+      <input type="text" name="" value="" placeholder="E-mail" id="email">
+      <input type="button" onclick="" name="" value="Сохранить" id="add_num_but">
+    </div> -->
+    <!-- EDIT BLOCK -->
+    <!-- ADD NUMBER BLOCK -->
+    <div class="add_num " id="add_num">
+      <input type="text" name="" value="" placeholder="Имя" id="firstname">
+      <input type="text" name="" value="" placeholder="Фамилия" id="lastname">
+      <input type="text" name="" value="" placeholder="Номер" id="number">
+      <input type="text" name="" value="" placeholder="E-mail" id="email">
+      <input type="button" onclick="getPersonInfo()" name="" value="Добавить" id="add_num_but">
+    </div>
+    <!-- ADD NUMBER BLOCK -->
+    <!-- NUMBER LIST -->
+    <div class="numbers">
+      <ul id="numberList">
+        <li>
+          <div class="num_info">
+
+          </div>
+        </li>
+      </ul>
+    </div>
+    <!-- NUMBER LIST -->
+  </div>
+  </div>
+
+
+  <script src="js/main.js"></script>
+</body>
+</html>
