@@ -12,32 +12,32 @@
   var numbers = [];
 
   window.getPersonInfo = function () {
-    var firstname = document.getElementById('firstname');
-    var lastname = document.getElementById('lastname');
-    var number = document.getElementById('number');
-    var email = document.getElementById('email');
-    var firstnameVal = firstname.value;
-    var lastnameVal = lastname.value;
-    var numberVal = number.value;
-    var emailVal = email.value;
-    var numberList = document.getElementById('numberList');
+      var firstname = document.getElementById('firstname');
+      var lastname = document.getElementById('lastname');
+      var number = document.getElementById('number');
+      var email = document.getElementById('email');
+      var firstnameVal = firstname.value;
+      var lastnameVal = lastname.value;
+      var numberVal = number.value;
+      var emailVal = email.value;
+      var numberList = document.getElementById('numberList');
       if (firstnameVal != "" && lastnameVal != "" && numberVal != "" && emailVal != "") {
 
 
-          for (var i = 0; i < numbers.length; i++) {
-              var person = {
+
+          var person = {
                   firstname: firstnameVal,
                   lastname: lastnameVal,
                   number: [numberVal],
                   email: emailVal
               };
+          numbers.push(person);
 
-              numbers.push(person);
+          for (var i = 0; i < numbers.length; i++) {
 
-
-              localStorage.setItem('number' + [i], JSON.stringify(person[i]));
+              localStorage.setItem('person' + [i], JSON.stringify(numbers[i]));
               var entry = document.createElement('li');
-              entry.appendChild(document.createTextNode(localStorage.getItem(person, firstname)));
+              entry.appendChild(document.createTextNode(localStorage.getItem(JSON.parse(person))));
               var editButton = document.createElement('button');
               editButton.appendChild(document.createTextNode("Изменить"));
               editButton.setAttribute('onClick','editName('+i+')');
@@ -47,7 +47,7 @@
 
 
         var add_num = document.getElementById('add_num');
-        add_num.style.display = 'none';
+          add_num.style.display = 'none';
         setTimeout(function() {
           add_num.style.opacity='0'
         },5);
