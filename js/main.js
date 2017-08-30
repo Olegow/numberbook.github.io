@@ -36,8 +36,9 @@
           for (var i = 0; i < numbers.length; i++) {
 
               localStorage.setItem('person' + [i], JSON.stringify(numbers[i]));
+
               var entry = document.createElement('li');
-              entry.appendChild(document.createTextNode(localStorage.getItem(JSON.parse(person))));
+              entry.appendChild(document.createTextNode(JSON.parse(localStorage.getItem('person' + [i])).firstname));
               var editButton = document.createElement('button');
               editButton.appendChild(document.createTextNode("Изменить"));
               editButton.setAttribute('onClick','editName('+i+')');
