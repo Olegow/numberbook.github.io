@@ -1,15 +1,13 @@
-
-
   var addNumBut = document.getElementById('add_num_but');
   var firstname = document.getElementById('firstname');
   var lastname = document.getElementById('lastname');
   var number = document.getElementById('number');
   var email = document.getElementById('email');
   var mask = "per_";
+  var locLen = localStorage.length;
   var i;
   var numbers = [];
   function showNumberList () {
-      var locLen = localStorage.length;
       if (locLen > 0) {
           for (i = 0; i < locLen; i++) {
               var key = localStorage.key(i);
@@ -57,6 +55,10 @@
 
           for ( i = 0; i < numbers.length; i++) {
 
+              if (i === 0) {
+                i = locLen;
+              }
+
               localStorage.setItem(mask + [i], JSON.stringify(numbers[i]));
 
               var entry = document.createElement('li');
@@ -73,6 +75,10 @@
           entryDiv.appendChild(entryP);
           entryDiv.appendChild(editButton);
           numberList.appendChild(entry);
+
+          if (localStorage.mask == 'undefined') {
+            JSON.stringify(numbers[i])
+          }
 
           var add_num = document.getElementById('add_num');
           add_num.style.display = 'none';

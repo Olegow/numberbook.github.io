@@ -9,8 +9,28 @@ body {
 header {
     display: flex;
     align-items: center;
+    justify-content: center;
     height: 60px;
     background-color: #a3a3a3;
+}
+.search_block {
+    width: 100%;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.search {
+    width: 50%;
+}
+.ser_but {
+    width: 25%;
+}
+.add_but {
+    width: 25%;
 }
 .add_num {
     width: 90%;
