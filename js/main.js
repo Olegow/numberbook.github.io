@@ -5,9 +5,9 @@
   var lastname = document.getElementById('lastname');
   var number = document.getElementById('number');
   var email = document.getElementById('email');
+  var mask = "per_";
   var i;
   var numbers = [];
-  
   function showNumberList () {
       var locLen = localStorage.length;
       if (locLen > 0) {
@@ -17,10 +17,9 @@
               var entryDiv = document.createElement('div');
               var entryP = document.createElement('p');
               entryP.innerText = JSON.parse(localStorage.getItem(key)).firstname + ' ' + JSON.parse(localStorage.getItem(key)).lastname;
-
               var editButton = document.createElement('button');
               editButton.appendChild(document.createTextNode("Изменить"));
-              editButton.setAttribute('onClick','showEditName('+i+')');
+              editButton.setAttribute('onClick', 'showEditName(' + i + ')');
               entry.setAttribute('class', 'num_info');
               entryDiv.setAttribute('class', 'num_info_cent');
               entry.appendChild(entryDiv);
@@ -33,6 +32,7 @@
   }
   showNumberList();
 
+  console.log(i)
   function showAddNum () {
       var add_num = document.getElementById('add_num');
       add_num.style.display = 'flex';
@@ -57,12 +57,12 @@
 
           for ( i = 0; i < numbers.length; i++) {
 
-              localStorage.setItem('person' + [i], JSON.stringify(numbers[i]));
+              localStorage.setItem(mask + [i], JSON.stringify(numbers[i]));
 
               var entry = document.createElement('li');
               var entryDiv = document.createElement('div');
               var entryP = document.createElement('p');
-              entryP.innerText = JSON.parse(localStorage.getItem('person' + [i])).firstname + ' ' + JSON.parse(localStorage.getItem('person' + [i])).lastname;
+              entryP.innerText = JSON.parse(localStorage.getItem(mask + [i])).firstname + ' ' + JSON.parse(localStorage.getItem(mask + [i])).lastname;
           }
           var editButton = document.createElement('button');
           editButton.appendChild(document.createTextNode("Изменить"));
