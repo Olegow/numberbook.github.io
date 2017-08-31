@@ -18,13 +18,13 @@
     </header>
   <div class="num_page">
     <!-- EDIT BLOCK -->
-    <!-- <div class="num_edit">
-      <input type="text" name="" value="" placeholder="Имя" id="firstname">
-      <input type="text" name="" value="" placeholder="Фамилия" id="lastname">
-      <input type="text" name="" value="" placeholder="Номер" id="number">
-      <input type="text" name="" value="" placeholder="E-mail" id="email">
-      <input type="button" onclick="" name="" value="Сохранить" id="add_num_but">
-    </div> -->
+    <div class="num_edit" id="num_edit">
+      <input type="text" name="" value="" placeholder="Имя" id="firstnameInfo">
+      <input type="text" name="" value="" placeholder="Фамилия" id="lastnameInfo">
+      <input type="text" name="" value="" placeholder="Номер" id="numberInfo">
+      <input type="text" name="" value="" placeholder="E-mail" id="emailInfo">
+      <input type="button" onclick="changeName()" name="" value="Сохранить" id="change_num_but">
+    </div>
     <!-- EDIT BLOCK -->
     <!-- ADD NUMBER BLOCK -->
     <div class="add_num " id="add_num">
@@ -38,11 +38,7 @@
     <!-- NUMBER LIST -->
     <div class="numbers">
       <ul id="numberList">
-        <li>
-          <div class="num_info">
 
-          </div>
-        </li>
       </ul>
     </div>
     <!-- NUMBER LIST -->
