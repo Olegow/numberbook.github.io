@@ -13,6 +13,7 @@
   function showNumberList () {
       if (locLen > 0) {
           for (i = 0; i < locLen; i++) {
+              var numLen = JSON.parse(localStorage.getItem(mask + i)).number.length;
               numbers.push(localStorage.getItem(mask + i))
               var key = localStorage.key(i);
               var entry = document.createElement('li');
@@ -20,16 +21,22 @@
               var entryP = document.createElement('p');
               var entryPNum = document.createElement('p');
               entryP.innerText = JSON.parse(localStorage.getItem(key)).firstname + ' ' + JSON.parse(localStorage.getItem(key)).lastname;
-              entryPNum.innerText = JSON.parse(localStorage.getItem(key)).number[i];
+              for (var j = 0; j < numLen; j++) {
+                  entryPNum.innerText = JSON.parse(localStorage.getItem(key)).number[j];
+              }
               var editButton = document.createElement('button');
+              var remuveButton = document.createElement('button');
               editButton.appendChild(document.createTextNode("Изменить"));
-              editButton.setAttribute('onClick', 'showEditName(' + i + ')');
+              remuveButton.appendChild(document.createTextNode("Удалить"));
+              editButton.setAttribute('onClick','showEditName('+i+')');
+              remuveButton.setAttribute('onClick','removePerson('+i+')');
               entry.setAttribute('class', 'num_info');
               entryDiv.setAttribute('class', 'num_info_cent');
               entry.appendChild(entryDiv);
               entryDiv.appendChild(entryP);
               entryDiv.appendChild(entryPNum);
               entryDiv.appendChild(editButton);
+              entryDiv.appendChild(remuveButton);
               numberList.appendChild(entry);
           }
 
@@ -37,7 +44,7 @@
   }
   showNumberList();
 
-  console.log(i)
+
   function showAddNum () {
       var add_num = document.getElementById('add_num');
       add_num.style.display = 'flex';
@@ -49,6 +56,7 @@
       var lastnameVal = lastname.value;
       var numberVal = number.value;
       var emailVal = email.value;
+
       var numberList = document.getElementById('numberList');
 
       if (firstnameVal != "" && lastnameVal != "" && numberVal != "" && emailVal != "") {
@@ -64,26 +72,32 @@
           
           localStorage.setItem(mask + numId, JSON.stringify(numbers[numId]));
 
+          var numLen = JSON.parse(localStorage.getItem(mask + numId)).number.length;
           var entry = document.createElement('li');
           var entryDiv = document.createElement('div');
           var entryP = document.createElement('p');
           var entryPNum = document.createElement('p');
           entryP.innerText = JSON.parse(localStorage.getItem(mask + numId)).firstname + ' ' + JSON.parse(localStorage.getItem(mask + numId)).lastname;
-          entryPNum.innerText = JSON.parse(localStorage.getItem(mask + numId)).number[i];
+          for (var j = 0; j < numLen; j++) {
+                  entryPNum.innerText = JSON.parse(localStorage.getItem(mask + numId)).number[j];
+              }
           var editButton = document.createElement('button');
+          var remuveButton = document.createElement('button');
           editButton.appendChild(document.createTextNode("Изменить"));
+          remuveButton.appendChild(document.createTextNode("Удалить"));
           editButton.setAttribute('onClick','showEditName('+i+')');
+          remuveButton.setAttribute('onClick','removePerson('+i+')');
           entry.setAttribute('class', 'num_info');
           entryDiv.setAttribute('class', 'num_info_cent');
           entry.appendChild(entryDiv);
           entryDiv.appendChild(entryP);
           entryDiv.appendChild(entryPNum);
           entryDiv.appendChild(editButton);
+          entryDiv.appendChild(remuveButton);
           numberList.appendChild(entry);
 
           numId++;
 
-  console.log(numId);
           var add_num = document.getElementById('add_num');
           add_num.style.display = 'none';
           setTimeout(function() {add_num.style.opacity='0'},5);
@@ -100,13 +114,81 @@
       num_edit.style.display = 'flex';
       setTimeout(function() {num_edit.style.opacity='1'},5);
 
+      var num_edit = document.getElementById('num_edit');
+
+      var changeButton = document.createElement('input');
+      changeButton.setAttribute('type','button');
+      changeButton.setAttribute('value','Сохранить');
+      changeButton.setAttribute('id','change_num_but');
+      changeButton.setAttribute('onClick','changeName('+i+')');
+      num_edit.appendChild(changeButton)
+
       firstnameInfo.value = JSON.parse(localStorage.getItem(mask + [i])).firstname;
       lastnameInfo.value = JSON.parse(localStorage.getItem(mask + [i])).lastname;
       numberInfo.value = JSON.parse(localStorage.getItem(mask + [i])).number;
       emailInfo.value = JSON.parse(localStorage.getItem(mask + [i])).email;
   }
 
-  function changeName () {
-            
+  function changeName (i) {
+
+      var newPersonInfo = {
+        firstname: firstnameInfo.value,
+        lastname: lastnameInfo.value,
+        number: [numberInfo.value],
+        email: emailInfo.value
+      }
+
+      numbers.push(newPersonInfo);
+      localStorage.setItem(mask + [i], JSON.stringify(numbers[i]));
+
+      var num_edit = document.getElementById('num_edit');
+      num_edit.style.display = 'none';
+      setTimeout(function() {add_num.style.opacity='0'},5);
+
   }
 
+  function removePerson(i) {
+    localStorage.removeItem(mask + [i]);
+  }
+
+  function searchPerson() {
+    var search = document.getElementById('search');
+    var searchVal = search.value;
+
+    for (var k = 0; k < locLen; k++) {
+    var str = JSON.parse(localStorage.getItem(mask + k)).firstname + ' ' + 
+    JSON.parse(localStorage.getItem(mask + k)).lastname + ' ' + 
+    JSON.parse(localStorage.getItem(mask + k)).number + ' ' + 
+    JSON.parse(localStorage.getItem(mask + k)).email
+
+    var searchRes = str.search(searchVal);
+
+      if (searchRes ===  0 || searchRes > 0) {
+
+        var num_edit = document.getElementById('num_edit');
+        num_edit.style.display = 'flex';
+        setTimeout(function() {num_edit.style.opacity='1'},5);
+
+        var num_edit = document.getElementById('num_edit');
+
+        var changeButton = document.createElement('input');
+        changeButton.setAttribute('type','button');
+        changeButton.setAttribute('value','Закрыть');
+        changeButton.setAttribute('id','change_num_but');
+        changeButton.setAttribute('onClick','hideSearchPer()');
+        num_edit.appendChild(changeButton)
+
+        firstnameInfo.value = JSON.parse(localStorage.getItem(mask + [k])).firstname;
+        lastnameInfo.value = JSON.parse(localStorage.getItem(mask + [k])).lastname;
+        numberInfo.value = JSON.parse(localStorage.getItem(mask + [k])).number;
+        emailInfo.value = JSON.parse(localStorage.getItem(mask + [k])).email;
+
+      }
+    }
+  }
+
+  function hideSearchPer () {
+    var num_edit = document.getElementById('num_edit');
+    num_edit.style.display = 'none';
+    setTimeout(function() {add_num.style.opacity='0'},5);
+  }
