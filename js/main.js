@@ -1,3 +1,4 @@
+  var i = 0;
   var addNumBut = document.getElementById('add_num_but');
   var firstname = document.getElementById('firstname');
   var lastname = document.getElementById('lastname');
@@ -39,7 +40,6 @@
               entryDiv.appendChild(remuveButton);
               numberList.appendChild(entry);
           }
-
       }
   }
   showNumberList();
@@ -139,11 +139,13 @@
       }
 
       numbers.push(newPersonInfo);
-      localStorage.setItem(mask + [i], JSON.stringify(numbers[i]));
+      localStorage.setItem(mask + [i], JSON.stringify(newPersonInfo));
 
       var num_edit = document.getElementById('num_edit');
       num_edit.style.display = 'none';
       setTimeout(function() {add_num.style.opacity='0'},5);
+
+      console.log(numbers);
 
   }
 
@@ -155,7 +157,8 @@
     var search = document.getElementById('search');
     var searchVal = search.value;
 
-    for (var k = 0; k < locLen; k++) {
+    if (searchVal != "") {
+      for (var k = 0; k < locLen; k++) {
     var str = JSON.parse(localStorage.getItem(mask + k)).firstname + ' ' + 
     JSON.parse(localStorage.getItem(mask + k)).lastname + ' ' + 
     JSON.parse(localStorage.getItem(mask + k)).number + ' ' + 
@@ -185,10 +188,13 @@
 
       }
     }
+    }
+
+    
   }
 
   function hideSearchPer () {
     var num_edit = document.getElementById('num_edit');
     num_edit.style.display = 'none';
-    setTimeout(function() {add_num.style.opacity='0'},5);
+     setTimeout(function() {add_num.style.opacity='0'},5);
   }
