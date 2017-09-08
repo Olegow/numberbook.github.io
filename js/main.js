@@ -11,38 +11,38 @@
   var numbers = [];
   var numId = locLen;
 
-  function showNumberList () {
-      if (locLen > 0) {
-          for (i = 0; i < locLen; i++) {
-              var numLen = JSON.parse(localStorage.getItem(mask + i)).number.length;
-              numbers.push(localStorage.getItem(mask + i))
-              var key = localStorage.key(i);
-              var entry = document.createElement('li');
-              var entryDiv = document.createElement('div');
-              var entryP = document.createElement('p');
-              var entryPNum = document.createElement('p');
-              entryP.innerText = JSON.parse(localStorage.getItem(key)).firstname + ' ' + JSON.parse(localStorage.getItem(key)).lastname;
-              for (var j = 0; j < numLen; j++) {
-                  entryPNum.innerText = JSON.parse(localStorage.getItem(key)).number[j];
-              }
-              var editButton = document.createElement('button');
-              var remuveButton = document.createElement('button');
-              editButton.appendChild(document.createTextNode("Изменить"));
-              remuveButton.appendChild(document.createTextNode("Удалить"));
-              editButton.setAttribute('onClick','showEditName('+i+')');
-              remuveButton.setAttribute('onClick','removePerson('+i+')');
-              entry.setAttribute('class', 'num_info');
-              entryDiv.setAttribute('class', 'num_info_cent');
-              entry.appendChild(entryDiv);
-              entryDiv.appendChild(entryP);
-              entryDiv.appendChild(entryPNum);
-              entryDiv.appendChild(editButton);
-              entryDiv.appendChild(remuveButton);
-              numberList.appendChild(entry);
-          }
-      }
-  }
-  showNumberList();
+  // function showNumberList () {
+      // if (locLen > 0) {
+      //     for (i = 0; i < locLen; i++) {
+      //         var numLen = JSON.parse(localStorage.getItem(mask + i)).number.length;
+      //         numbers.push(localStorage.getItem(mask + i))
+      //         var key = localStorage.key(i);
+      //         var entry = document.createElement('li');
+      //         var entryDiv = document.createElement('div');
+      //         var entryP = document.createElement('p');
+      //         var entryPNum = document.createElement('p');
+      //         entryP.innerText = JSON.parse(localStorage.getItem(key)).firstname + ' ' + JSON.parse(localStorage.getItem(key)).lastname;
+      //         for (var j = 0; j < numLen; j++) {
+      //             entryPNum.innerText = JSON.parse(localStorage.getItem(key)).number[j];
+      //         }
+      //         var editButton = document.createElement('button');
+      //         var remuveButton = document.createElement('button');
+      //         editButton.appendChild(document.createTextNode("Изменить"));
+      //         remuveButton.appendChild(document.createTextNode("Удалить"));
+      //         editButton.setAttribute('onClick','showEditName('+i+')');
+      //         remuveButton.setAttribute('onClick','removePerson('+i+')');
+      //         entry.setAttribute('class', 'num_info');
+      //         entryDiv.setAttribute('class', 'num_info_cent');
+      //         entry.appendChild(entryDiv);
+      //         entryDiv.appendChild(entryP);
+      //         entryDiv.appendChild(entryPNum);
+      //         entryDiv.appendChild(editButton);
+      //         entryDiv.appendChild(remuveButton);
+      //         numberList.appendChild(entry);
+      //     }
+      // }
+  // }
+  // showNumberList();
 
 
   function showAddNum () {
@@ -62,6 +62,7 @@
       if (firstnameVal != "" && lastnameVal != "" && numberVal != "" && emailVal != "") {
 
           var person = {
+                  id: numId,
                   firstname: firstnameVal,
                   lastname: lastnameVal,
                   number: [numberVal],
@@ -70,17 +71,19 @@
           numbers.push(person);
 
           
-          localStorage.setItem(mask + numId, JSON.stringify(numbers[numId]));
+          localStorage.setItem('numbers', JSON.stringify(numbers));
 
-          var numLen = JSON.parse(localStorage.getItem(mask + numId)).number.length;
+          // var numLen = JSON.parse(localStorage.getItem(mask + numId)).number.length;
+          for (i = 0; i < numId; i++) {
+
           var entry = document.createElement('li');
           var entryDiv = document.createElement('div');
           var entryP = document.createElement('p');
           var entryPNum = document.createElement('p');
-          entryP.innerText = JSON.parse(localStorage.getItem(mask + numId)).firstname + ' ' + JSON.parse(localStorage.getItem(mask + numId)).lastname;
-          for (var j = 0; j < numLen; j++) {
-                  entryPNum.innerText = JSON.parse(localStorage.getItem(mask + numId)).number[j];
-              }
+          entryP.innerText = JSON.parse(localStorage.getItem('numbers').firstname);
+          // // for (var j = 0; j < numLen; j++) {
+          // //         entryPNum.innerText = JSON.parse(localStorage.getItem(mask + numId)).number[j];
+          // //     }
           var editButton = document.createElement('button');
           var remuveButton = document.createElement('button');
           editButton.appendChild(document.createTextNode("Изменить"));
@@ -95,6 +98,7 @@
           entryDiv.appendChild(editButton);
           entryDiv.appendChild(remuveButton);
           numberList.appendChild(entry);
+          }
 
           numId++;
 
