@@ -12,16 +12,14 @@
   var key = localStorage.key(locLen - 1);
   var numId = parseInt(key.substr(4)) + 1;
   var delId = numId;
-  var i = 0;
-
-
-  if (i === 0) {
-    i != 0;
-  }
 
   function showNumberList () {
       if (locLen > 0) {
           for (var key in localStorage) {
+              var numberListLen = document.getElementById('numberList').children.length;
+              for ( var k = numberListLen; k < numberListLen; k++){
+                return k;
+              }
               var numLen = JSON.parse(localStorage.getItem(key)).number.length;
               numbers.push(localStorage.getItem(key))
               var entry = document.createElement('li');
@@ -36,8 +34,8 @@
               var remuveButton = document.createElement('button');
               editButton.appendChild(document.createTextNode("Изменить"));
               remuveButton.appendChild(document.createTextNode("Удалить"));
-              editButton.setAttribute('onClick','showEditName('+i+')');
-              remuveButton.setAttribute('onClick','removePerson('+i+')');
+              editButton.setAttribute('onClick','showEditName('+k+')');
+              remuveButton.setAttribute('onClick','removePerson('+k+')');
               entry.setAttribute('class', 'num_info');
               entryDiv.setAttribute('class', 'num_info_cent');
               entry.appendChild(entryDiv);
@@ -48,7 +46,6 @@
               numberList.appendChild(entry);
           }
       }
-      i++;
   }
   showNumberList();
 
@@ -62,7 +59,13 @@
   function getPersonInfo () {
 
       
-      // var numberListLen = document.getElementById('numberList').children.length;
+      var numberListLen = document.getElementById('numberList').children.length;
+      for ( var k = numberListLen; k < numberListLen; k++){
+        return k;
+      }
+
+
+      
 
 
 
@@ -99,8 +102,8 @@
           var remuveButton = document.createElement('button');
           editButton.appendChild(document.createTextNode("Изменить"));
           remuveButton.appendChild(document.createTextNode("Удалить"));
-          editButton.setAttribute('onClick','showEditName('+i+')');
-          remuveButton.setAttribute('onClick','removePerson('+i+')');
+          editButton.setAttribute('onClick','showEditName('+k+')');
+          remuveButton.setAttribute('onClick','removePerson('+k+')');
           entry.setAttribute('class', 'num_info');
           entryDiv.setAttribute('class', 'num_info_cent');
           entry.appendChild(entryDiv);
@@ -111,8 +114,6 @@
           numberList.appendChild(entry);
 
           numId++;
-          i++;
-
 
           var add_num = document.getElementById('add_num');
           add_num.style.display = 'none';
