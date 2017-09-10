@@ -1,22 +1,32 @@
-  var i = 0;
+  // var i = 0;
   var addNumBut = document.getElementById('add_num_but');
   var firstname = document.getElementById('firstname');
   var lastname = document.getElementById('lastname');
   var number = document.getElementById('number');
   var email = document.getElementById('email');
   var numId = 0;
+  var delId = 0;
   var mask = "per_";
   var locLen = localStorage.length;
   var i;
   var numbers = [];
-  var numId = locLen;
+  var key = localStorage.key(locLen - 1);
+  var numId = parseInt(key.substr(4)) + 1;
+<<<<<<< HEAD
+<<<<<<< HEAD
+  var delId = numId;
+
+=======
+>>>>>>> 27bd2eb7b97a4bd977d3c8368491ea1f4bfea9b3
+=======
+>>>>>>> 27bd2eb7b97a4bd977d3c8368491ea1f4bfea9b3
+
 
   function showNumberList () {
       if (locLen > 0) {
-          for (i = 0; i < locLen; i++) {
-              var numLen = JSON.parse(localStorage.getItem(mask + i)).number.length;
-              numbers.push(localStorage.getItem(mask + i))
-              var key = localStorage.key(i);
+          for (var key in localStorage) {
+              var numLen = JSON.parse(localStorage.getItem(key)).number.length;
+              numbers.push(localStorage.getItem(key))
               var entry = document.createElement('li');
               var entryDiv = document.createElement('div');
               var entryP = document.createElement('p');
@@ -97,10 +107,13 @@
           numberList.appendChild(entry);
 
           numId++;
+          i++;
+
 
           var add_num = document.getElementById('add_num');
           add_num.style.display = 'none';
           setTimeout(function() {add_num.style.opacity='0'},5);
+          location.reload()
       }
   };
 
@@ -145,12 +158,13 @@
       num_edit.style.display = 'none';
       setTimeout(function() {add_num.style.opacity='0'},5);
 
-      console.log(numbers);
+      location.reload()
 
   }
 
-  function removePerson(i) {
+  function removePerson(delId) {
     localStorage.removeItem(mask + [i]);
+    location.reload()
   }
 
   function searchPerson() {
