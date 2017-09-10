@@ -1,4 +1,4 @@
-  // var i = 0;
+  
   var addNumBut = document.getElementById('add_num_but');
   var firstname = document.getElementById('firstname');
   var lastname = document.getElementById('lastname');
@@ -8,22 +8,16 @@
   var delId = 0;
   var mask = "per_";
   var locLen = localStorage.length;
-  var i;
   var numbers = [];
   var key = localStorage.key(locLen - 1);
   var numId = parseInt(key.substr(4)) + 1;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   var delId = numId;
+  var i = 0;
 
-=======
->>>>>>> 27bd2eb7b97a4bd977d3c8368491ea1f4bfea9b3
-=======
->>>>>>> 27bd2eb7b97a4bd977d3c8368491ea1f4bfea9b3
-=======
->>>>>>> 27bd2eb7b97a4bd977d3c8368491ea1f4bfea9b3
 
+  if (i === 0) {
+    i != 0;
+  }
 
   function showNumberList () {
       if (locLen > 0) {
@@ -54,6 +48,7 @@
               numberList.appendChild(entry);
           }
       }
+      i++;
   }
   showNumberList();
 
@@ -65,6 +60,12 @@
   }
 
   function getPersonInfo () {
+
+      
+      // var numberListLen = document.getElementById('numberList').children.length;
+
+
+
       var firstnameVal = firstname.value;
       var lastnameVal = lastname.value;
       var numberVal = number.value;
@@ -166,7 +167,7 @@
   }
 
   function removePerson(delId) {
-    localStorage.removeItem(mask + [i]);
+    localStorage.removeItem(mask + [delId]);
     location.reload()
   }
 
