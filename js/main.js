@@ -14,8 +14,11 @@
   var numId = parseInt(key.substr(4)) + 1;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   var delId = numId;
 
+=======
+>>>>>>> 27bd2eb7b97a4bd977d3c8368491ea1f4bfea9b3
 =======
 >>>>>>> 27bd2eb7b97a4bd977d3c8368491ea1f4bfea9b3
 =======
