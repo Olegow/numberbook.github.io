@@ -147,7 +147,7 @@
       emailInfo.value = JSON.parse(localStorage.getItem(mask + [i])).email;
   }
 
-  function changeName (i) {
+  function changeName (chanName) {
 
       var newPersonInfo = {
         firstname: firstnameInfo.value,
@@ -157,7 +157,7 @@
       }
 
       numbers.push(newPersonInfo);
-      localStorage.setItem(mask + [i], JSON.stringify(newPersonInfo));
+      localStorage.setItem(mask + [chanName], JSON.stringify(newPersonInfo));
 
       var num_edit = document.getElementById('num_edit');
       num_edit.style.display = 'none';
@@ -169,6 +169,11 @@
 
   function removePerson(delId) {
     localStorage.removeItem(mask + [delId]);
+
+    for(p = delId; p < locLen; p++) {
+      k = p+1;
+    }
+
     location.reload()
   }
 
@@ -177,11 +182,11 @@
     var searchVal = search.value;
 
     if (searchVal != "") {
-      for (var k = 0; k < locLen; k++) {
-    var str = JSON.parse(localStorage.getItem(mask + k)).firstname + ' ' + 
-    JSON.parse(localStorage.getItem(mask + k)).lastname + ' ' + 
-    JSON.parse(localStorage.getItem(mask + k)).number + ' ' + 
-    JSON.parse(localStorage.getItem(mask + k)).email
+      for (var q = 0; q < locLen; q++) {
+    var str = JSON.parse(localStorage.getItem(mask + q)).firstname + ' ' + 
+    JSON.parse(localStorage.getItem(mask + q)).lastname + ' ' + 
+    JSON.parse(localStorage.getItem(mask + q)).number + ' ' + 
+    JSON.parse(localStorage.getItem(mask + q)).email
 
     var searchRes = str.search(searchVal);
 
