@@ -21,18 +21,23 @@
     <div class="num_edit" id="num_edit">
       <input type="text" name="" value="" placeholder="Имя" id="firstnameInfo">
       <input type="text" name="" value="" placeholder="Фамилия" id="lastnameInfo">
-      <input type="text" name="" value="" placeholder="Номер" id="numberInfo">
+      <input type="number" name="" value="" placeholder="Номер" id="numberInfo">
       <input type="text" name="" value="" placeholder="E-mail" id="emailInfo">
-      <!-- <input type="button" onclick="changeName(i)" name="" value="Сохранить" id="change_num_but"> -->
+      <div class="butBlock" id="butBlock">
+        
+      </div>
     </div>
     <!-- EDIT BLOCK -->
     <!-- ADD NUMBER BLOCK -->
     <div class="add_num " id="add_num">
       <input type="text" name="" value="" placeholder="Имя" id="firstname">
       <input type="text" name="" value="" placeholder="Фамилия" id="lastname">
-      <input type="text" name="" value="" placeholder="Номер" id="number">
+      <input type="number" name="" value="" placeholder="Номер" id="number">
       <input type="text" name="" value="" placeholder="E-mail" id="email">
-      <input type="button" onclick="getPersonInfo()" name="" value="Добавить" id="add_num_but">
+      <div class="butBlock">
+        <input type="button" onclick="getPersonInfo()" name="" value="Добавить" id="add_num_but">
+        <input type="button" onclick="hideSearchPer()" name="" value="Закрыть" id="close_num_but">
+      </div>
     </div>
     <!-- ADD NUMBER BLOCK -->
     <!-- NUMBER LIST -->

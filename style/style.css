@@ -106,3 +106,18 @@ header {
 .add_num input:last-child, .num_edit input:last-child {
     margin: 10px 10px 10px 10px;
 }
+.butBlock {
+    display: flex;
+    flex-direction: row;
+}
+#add_num_but, #close_num_but {
+    width: 50%;
+    margin: 10px 10px 10px 0px;
+}
+#add_num_but {
+    margin-left: 10px;
+}
+#change_num_but {
+    width: 50%;
+    margin-left: 10px;
+}
