@@ -13,6 +13,20 @@ header {
     height: 60px;
     background-color: #a3a3a3;
 }
+.numberBlock {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+}
+.number {
+    width: 94%;
+}
+.numberBlock img {
+    height: 20px;
+    margin-top: 15px;
+}
 .search_block {
     width: 100%;
     display: -webkit-flex;

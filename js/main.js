@@ -217,9 +217,10 @@ function searchPerson() {
         for (var q = 0; q < locLen; q++) {
             var str = JSON.parse(localStorage.getItem(mask + q)).firstname + ' ' + JSON.parse(localStorage.getItem(mask + q)).lastname + ' ' + JSON.parse(localStorage.getItem(mask + q)).number + ' ' + JSON.parse(localStorage.getItem(mask + q)).email
 
-            var searchRes = str.toLowerCase().search(searchVal);
+            var searchResLow = str.toLowerCase().search(searchVal);
+            var searchResUp = str.toUpperCase().search(searchVal);
 
-            if (searchRes === 0 || searchRes > 0) {
+            if (searchResLow === 0 || searchResLow > 0 || searchResUp === 0 || searchResUp > 0) {
 
                 var num_edit = document.getElementById('num_edit');
                 num_edit.style.display = 'flex';
@@ -255,6 +256,35 @@ function searchPerson() {
         }
     }
 
+}
+
+function addOneMoreNum(q) {
+    var AddOneMoreNumBut = document.getElementById('AddOneMoreNum'+q);
+    var numberBlocks = document.getElementById('numberBlocks');
+    var add_num = document.getElementById('add_num');
+    var q = numberBlocks.children.length;
+
+    AddOneMoreNumBut.style.transform = 'rotate(45deg)';
+
+    var oneMoreNum = document.createElement('input');
+    var oneMoreNumBlock = document.createElement('div');
+    var oneMoreImg = document.createElement('img');
+
+    oneMoreImg.setAttribute('src', 'images/plus.png');
+    oneMoreImg.setAttribute('onClick', 'addOneMoreNum()');
+    oneMoreImg.setAttribute('id', 'AddOneMoreNum'+q);
+
+    oneMoreNumBlock.setAttribute('class', 'numberBlock');
+
+
+    oneMoreNum.setAttribute('type', 'text');
+    oneMoreNum.setAttribute('placeholder', 'Номер');
+    oneMoreNum.setAttribute('class', 'number');
+
+    oneMoreNumBlock.appendChild(oneMoreNum);
+    oneMoreNumBlock.appendChild(oneMoreImg);
+
+    numberBlocks.appendChild(oneMoreNumBlock);
 }
 
 function hideSearchPer() {

@@ -21,7 +21,7 @@
     <div class="num_edit" id="num_edit">
       <input type="text" name="" value="" placeholder="Имя" id="firstnameInfo">
       <input type="text" name="" value="" placeholder="Фамилия" id="lastnameInfo">
-      <input type="number" name="" value="" placeholder="Номер" id="numberInfo">
+      <input type="text" name="" value="" placeholder="Номер" id="numberInfo">
       <input type="text" name="" value="" placeholder="E-mail" id="emailInfo">
       <div class="butBlock" id="butBlock">
         
@@ -32,7 +32,12 @@
     <div class="add_num " id="add_num">
       <input type="text" name="" value="" placeholder="Имя" id="firstname">
       <input type="text" name="" value="" placeholder="Фамилия" id="lastname">
-      <input type="number" name="" value="" placeholder="Номер" id="number">
+      <div id="numberBlocks">
+        <div class="numberBlock">
+          <input type="text" name="" value="" placeholder="Номер" id="number" class="number">
+          <img src="images/plus.png" onclick="addOneMoreNum()" alt="" id="AddOneMoreNum1">
+        </div>
+      </div>
       <input type="text" name="" value="" placeholder="E-mail" id="email">
       <div class="butBlock">
         <input type="button" onclick="getPersonInfo()" name="" value="Добавить" id="add_num_but">
